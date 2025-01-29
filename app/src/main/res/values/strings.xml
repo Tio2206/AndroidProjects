@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">MultipleLayout</string>
+    <string name="username_field">Username</string>
+    <string name="password_field">Password</string>
+    <string name="name_input">Name</string>
+    <string name="password_input">Password</string>
+    <string name="login_text">Login</string>
+</resources>
