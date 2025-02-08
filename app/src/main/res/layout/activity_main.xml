@@ -102,8 +102,8 @@
                 android:layout_weight="1"
                 android:paddingStart="5dp"
                 android:paddingEnd="5dp"
-                android:contentDescription="Code Icon"
-                app:srcCompat="@drawable/material_symbols__code" />
+                android:contentDescription="Calculator"
+                app:srcCompat="@drawable/flat_color_icons__calculator" />
 
             <ImageView
                 android:id="@+id/imageView3"
@@ -112,8 +112,8 @@
                 android:layout_weight="1"
                 android:paddingStart="5dp"
                 android:paddingEnd="5dp"
-                android:contentDescription="HTML Icon"
-                app:srcCompat="@drawable/material_symbols__html" />
+                android:contentDescription="Notes"
+                app:srcCompat="@drawable/fxemoji__notepage" />
 
             <ImageView
                 android:id="@+id/imageView4"
@@ -197,14 +197,14 @@
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:contentDescription="HTML Icon"
-                    android:src="@drawable/material_symbols__html" />
+                    android:src="@drawable/fxemoji__notepage" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:layout_marginStart="16dp"
-                    android:text="HTML"
+                    android:text="Notes"
                     android:textSize="16sp" />
             </LinearLayout>
 
@@ -230,7 +230,7 @@
                     android:textSize="16sp" />
             </LinearLayout>
 
-            <!-- Item 3 -->
+            <!-- Item 4 -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -252,7 +252,7 @@
                     android:textSize="16sp" />
             </LinearLayout>
 
-            <!-- Item 3 -->
+            <!-- Item 5 -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -271,7 +271,6 @@
                     android:layout_gravity="center_vertical"
                     android:layout_marginStart="16dp"
                     android:text="Workspace"
-                    android:textColor="#000000"
                     android:textSize="16sp" />
             </LinearLayout>
 
