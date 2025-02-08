@@ -5,14 +5,14 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LoginActivity">
+    tools:context=".SignupActivity">
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="sans-serif"
-        android:text="Welcome to MyApp"
+        android:text="Registration"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -49,20 +49,21 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="Login"
+        android:text="Sign Up"
         app:layout_constraintEnd_toEndOf="@+id/txt_password"
         app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="@+id/txt_password"
         app:layout_constraintTop_toBottomOf="@+id/txt_password" />
 
     <TextView
-        android:id="@+id/btn_register"
+        android:id="@+id/btn_login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="Don't have an account? Sign Up"
+        android:text="Already have an account? Login"
         android:textColor="#2962FF"
         app:layout_constraintEnd_toEndOf="@+id/btn_submit"
         app:layout_constraintStart_toStartOf="@+id/btn_submit"
         app:layout_constraintTop_toBottomOf="@+id/btn_submit" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

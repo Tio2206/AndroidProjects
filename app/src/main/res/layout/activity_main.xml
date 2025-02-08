@@ -189,6 +189,7 @@
 
             <!-- Item 2 -->
             <LinearLayout
+                android:id="@+id/notes_btn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"

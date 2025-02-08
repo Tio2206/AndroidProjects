@@ -1,5 +1,6 @@
 package com.example.multiplelayout
 
+import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
@@ -9,33 +10,64 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.multiplelayout.databinding.ActivityLoginBinding
+import com.google.android.material.color.DynamicColors
 
 class LoginActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityLoginBinding
+    private lateinit var databaseHelper: DatabaseHelper
+
     override fun onCreate(savedInstanceState: Bundle?) {
+//        DynamicColors.applyToActivitiesIfAvailable(this)
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_login)
+        binding = ActivityLoginBinding.inflate(layoutInflater)
+        setContentView(binding.root)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
 
-        val nama = findViewById<EditText>(R.id.editTextText)
-        val pass = findViewById<EditText>(R.id.editTextTextPassword)
+        databaseHelper = DatabaseHelper(this)
 
-        val buttonClick = findViewById<Button>(R.id.button2)
+        if (!databaseHelper.isUserAvailable()) {
+            val intent = Intent(this, SignupActivity::class.java)
+            startActivity(intent)
+            finish()
+            return
+        }
 
-        buttonClick.setOnClickListener {
-            if (nama.text.toString()=="user" && pass.text.toString()=="123") {
-                val intent = Intent(this, MainActivity::class.java)
-                Toast.makeText(this, "Login Success!", Toast.LENGTH_SHORT).show()
+        binding.btnSubmit.setOnClickListener{
+            val username = binding.txtUsername.text.toString()
+            val password = binding.txtPassword.text.toString()
+            loginDatabase(username, password)
+        }
 
-                startActivity(intent)
-            } else {
-                Toast.makeText(this, "Login Failed!", Toast.LENGTH_SHORT).show()
+        binding.btnRegister.setOnClickListener{
+            val intent = Intent(this, SignupActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
+    }
+
+    private fun loginDatabase(username: String, password: String){
+        val userExist = databaseHelper.readUser(username, password)
+        if (userExist){
+            Toast.makeText(this, "Login Successful", Toast.LENGTH_SHORT).show()
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
+        else{
+            Toast.makeText(this, "Login Failed", Toast.LENGTH_SHORT).show()
+            val builder = AlertDialog.Builder(this)
+            builder.setTitle("Login Gagal")
+            builder.setMessage("Username atau password yang Anda masukkan salah. Silakan coba lagi.")
+            builder.setPositiveButton("OK") { dialog, _ ->
+                dialog.dismiss()
             }
-
+            builder.show()
         }
     }
 }
