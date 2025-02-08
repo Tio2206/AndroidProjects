@@ -18,7 +18,6 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var databaseHelper: DatabaseHelper
 
     override fun onCreate(savedInstanceState: Bundle?) {
-//        DynamicColors.applyToActivitiesIfAvailable(this)
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         binding = ActivityLoginBinding.inflate(layoutInflater)

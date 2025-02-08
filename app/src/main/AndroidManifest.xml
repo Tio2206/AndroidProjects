@@ -5,6 +5,7 @@
     <uses-permission android:name="android.permission.VIBRATE" />
 
     <application
+        android:name=".MyApplication"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -33,10 +34,13 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".SignupActivity"
+            android:name=".CalculatorActivity"
             android:exported="false" />
         <activity
-            android:name=".CalculatorActivity"
+            android:name=".MainActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SignupActivity"
             android:exported="false" />
         <activity
             android:name=".LoginActivity"
@@ -47,9 +51,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".MainActivity"
-            android:exported="false" />
     </application>
 
 </manifest>

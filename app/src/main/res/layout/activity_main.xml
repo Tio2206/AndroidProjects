@@ -64,9 +64,8 @@
         android:layout_height="50dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:backgroundTint="#F44336"
+        android:backgroundTint="@color/design_default_color_error"
         android:text="Exit"
-        android:textColorLink="#6D2B2B"
         app:layout_constraintStart_toEndOf="@+id/textView3"
         app:layout_constraintTop_toBottomOf="@+id/imageView7" />
 
@@ -76,7 +75,7 @@
         android:layout_width="159dp"
         android:layout_height="53dp"
         android:layout_marginTop="40dp"
-        android:justificationMode="inter_character"
+        android:justificationMode="inter_word"
         android:text="Saya Bagus Satrio dan saya suka main ceteep. Nama timnya kumapwns"
         app:layout_constraintStart_toStartOf="@+id/cardView"
         app:layout_constraintTop_toBottomOf="@+id/cardView" />
@@ -183,7 +182,6 @@
                     android:layout_gravity="center_vertical"
                     android:layout_marginStart="16dp"
                     android:text="Calculator"
-                    android:textColor="#000000"
                     android:textSize="16sp" />
             </LinearLayout>
 
@@ -207,7 +205,6 @@
                     android:layout_gravity="center_vertical"
                     android:layout_marginStart="16dp"
                     android:text="HTML"
-                    android:textColor="#000000"
                     android:textSize="16sp" />
             </LinearLayout>
 
@@ -230,7 +227,6 @@
                     android:layout_gravity="center_vertical"
                     android:layout_marginStart="16dp"
                     android:text="Laptop"
-                    android:textColor="#000000"
                     android:textSize="16sp" />
             </LinearLayout>
 
@@ -252,8 +248,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:layout_marginStart="16dp"
-                    android:text="{Planet}"
-                    android:textColor="#000000"
+                    android:text="Planet"
                     android:textSize="16sp" />
             </LinearLayout>
 
