@@ -19,6 +19,8 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var exit : Button
     private lateinit var notes : LinearLayout
     private lateinit var calculator : LinearLayout
+    private lateinit var books : LinearLayout
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,6 +40,8 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         calculator.setOnClickListener(this)
         notes = findViewById(R.id.notes_btn)
         notes.setOnClickListener(this)
+        books = findViewById(R.id.books_btn)
+        books.setOnClickListener(this)
         // Inisialisasi view setelah setContentView
     }
 
@@ -61,6 +65,10 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             }
             R.id.notes_btn->{
                 val intent = Intent(this, NotesActivity::class.java)
+                startActivity(intent)
+            }
+            R.id.books_btn->{
+                val intent = Intent(this, BooksAct::class.java)
                 startActivity(intent)
             }
         }

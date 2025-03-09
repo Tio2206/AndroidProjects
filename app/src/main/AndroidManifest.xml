@@ -2,7 +2,15 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="true" />
+
     <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
 
     <application
         android:name=".MyApplication"
@@ -15,6 +23,38 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MultipleLayout"
         tools:targetApi="31">
+        <activity
+            android:name=".EditBookAct"
+            android:exported="false" />
+        <activity
+            android:name=".DetailBookAct"
+            android:exported="false" />
+        <activity
+            android:name=".AddBookAct"
+            android:exported="false" />
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/filepaths" />
+        </provider>
+
+        <activity
+            android:name=".AboutBookAct"
+            android:exported="false" />
+        <activity
+            android:name=".BooksAct"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".NoteUpdateActivity"
             android:exported="false" />
@@ -35,6 +75,9 @@
             android:exported="false" />
         <activity
             android:name=".LoginActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SplashAct"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

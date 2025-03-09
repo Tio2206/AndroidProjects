@@ -3,8 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
-    android:layout_width="360dp"
-    android:layout_height="820dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     tools:context=".MainActivity">
 
     <androidx.cardview.widget.CardView
@@ -81,6 +81,7 @@
         app:layout_constraintTop_toBottomOf="@+id/cardView" />
 
     <HorizontalScrollView
+        android:id="@+id/horizontalScrollView"
         android:layout_width="180dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
@@ -100,9 +101,9 @@
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_weight="1"
+                android:contentDescription="Calculator"
                 android:paddingStart="5dp"
                 android:paddingEnd="5dp"
-                android:contentDescription="Calculator"
                 app:srcCompat="@drawable/flat_color_icons__calculator" />
 
             <ImageView
@@ -110,9 +111,9 @@
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_weight="1"
+                android:contentDescription="Notes"
                 android:paddingStart="5dp"
                 android:paddingEnd="5dp"
-                android:contentDescription="Notes"
                 app:srcCompat="@drawable/fxemoji__notepage" />
 
             <ImageView
@@ -120,19 +121,19 @@
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_weight="1"
+                android:contentDescription="Books"
                 android:paddingStart="5dp"
                 android:paddingEnd="5dp"
-                android:contentDescription="Laptop Icon"
-                app:srcCompat="@drawable/material_symbols__laptop_mac_outline" />
+                app:srcCompat="@drawable/noto__books" />
 
             <ImageView
                 android:id="@+id/imageView5"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_weight="1"
+                android:contentDescription="Planet Icon"
                 android:paddingStart="5dp"
                 android:paddingEnd="5dp"
-                android:contentDescription="Planet Icon"
                 app:srcCompat="@drawable/material_symbols__planet_outline" />
 
             <ImageView
@@ -140,14 +141,15 @@
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_weight="1"
+                android:contentDescription="Premium Workspace Icon"
                 android:paddingStart="5dp"
                 android:paddingEnd="5dp"
-                android:contentDescription="Premium Workspace Icon"
                 app:srcCompat="@drawable/material_symbols__workspace_premium_outline" />
         </LinearLayout>
     </HorizontalScrollView>
 
     <ScrollView
+        android:id="@+id/scrollView2"
         android:layout_width="330dp"
         android:layout_height="250dp"
         android:layout_marginTop="200dp"
@@ -210,6 +212,7 @@
 
             <!-- Item 3 -->
             <LinearLayout
+                android:id="@+id/books_btn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
@@ -218,15 +221,15 @@
                 <ImageView
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    android:contentDescription="Laptop Icon"
-                    android:src="@drawable/material_symbols__laptop_mac_outline" />
+                    android:contentDescription="Book Icon"
+                    android:src="@drawable/noto__books" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:layout_marginStart="16dp"
-                    android:text="Laptop"
+                    android:text="Books"
                     android:textSize="16sp" />
             </LinearLayout>
 
@@ -278,5 +281,17 @@
 
         </LinearLayout>
     </ScrollView>
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="My Projects:"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/scrollView2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/horizontalScrollView" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
