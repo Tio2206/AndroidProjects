@@ -2,34 +2,49 @@ package com.example.multiplelayout
 
 import android.app.DatePickerDialog
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
-import android.widget.Button
-import android.widget.EditText
-import android.widget.ImageView
-import android.widget.Toast
+import android.widget.*
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import java.util.Calendar
 
 class EditBookAct : AppCompatActivity() {
+    private lateinit var bookImage: ImageView
+    private lateinit var databaseHelper: DatabaseHelper
+    private var selectedImageUri: Uri? = null
+    private var bookId: Int = -1
+
+    // ActivityResultLauncher for picking an image
+    private val pickImageLauncher =
+        registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
+            uri?.let {
+                selectedImageUri = it
+                Glide.with(this).load(it).into(bookImage)
+            }
+        }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_edit_book)
 
-        val bookId = intent.getIntExtra("BOOK_ID", -1)
-        val databaseHelper = DatabaseHelper(this)
+        bookId = intent.getIntExtra("BOOK_ID", -1)
+        databaseHelper = DatabaseHelper(this)
         val book = databaseHelper.getBookById(bookId)
 
+        // Initialize UI elements
         val nameEditText = findViewById<EditText>(R.id.editBookName)
         val nicknameEditText = findViewById<EditText>(R.id.editBookNickname)
         val emailEditText = findViewById<EditText>(R.id.editBookEmail)
         val addressEditText = findViewById<EditText>(R.id.editBookAddress)
         val phoneEditText = findViewById<EditText>(R.id.editBookPhone)
         val birthdateEditText = findViewById<EditText>(R.id.editBookBirthdate)
-        val bookImage = findViewById<ImageView>(R.id.editBookImage)
+        bookImage = findViewById(R.id.editBookImage)
+        val changeImageButton = findViewById<Button>(R.id.btnChangeImage)
         val saveButton = findViewById<Button>(R.id.btnSave)
 
-        // Set existing values from the database
+        // Set existing values
         nameEditText.setText(book?.name ?: "")
         nicknameEditText.setText(book?.nickname ?: "")
         emailEditText.setText(book?.email ?: "")
@@ -41,11 +56,11 @@ class EditBookAct : AppCompatActivity() {
             Glide.with(this).load(it).into(bookImage)
         }
 
-        // Disable direct text input for the birthdate field
+        // Disable direct text input for birthdate field
         birthdateEditText.isFocusable = false
         birthdateEditText.isClickable = true
 
-        // Show DatePickerDialog when clicking birthdate field
+        // Open DatePickerDialog when birthdate field is clicked
         birthdateEditText.setOnClickListener {
             val calendar = Calendar.getInstance()
             val year = calendar.get(Calendar.YEAR)
@@ -58,7 +73,12 @@ class EditBookAct : AppCompatActivity() {
             }, year, month, day).show()
         }
 
-        // Save updated book info
+        // Handle image selection when "Change Image" button is clicked
+        changeImageButton.setOnClickListener {
+            pickImageLauncher.launch("image/*")
+        }
+
+        // Save updated book information
         saveButton.setOnClickListener {
             val updatedBook = Book(
                 bookId,
@@ -68,7 +88,7 @@ class EditBookAct : AppCompatActivity() {
                 addressEditText.text.toString(),
                 phoneEditText.text.toString(),
                 birthdateEditText.text.toString(),
-                book?.imagePath
+                selectedImageUri?.toString() ?: book?.imagePath // Save new image URI if changed
             )
 
             databaseHelper.updateBook(updatedBook)
